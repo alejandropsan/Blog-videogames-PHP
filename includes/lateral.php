@@ -1,17 +1,26 @@
-
 <aside id="sidebar">
+    
+    <div id="buscador" class="bloque">
+        <h3>Buscar</h3>
+
+        <form action="buscar.php" method="POST">
+            <input type="text" name="busqueda" /> 
+            <input type="submit" value="Buscar" />
+        </form>
+    </div>
        
     <?php if(isset($_SESSION['usuario'])): ?>
     <div id="usuario_logueado" class="bloque">
         <h3>Bienvenido, <?=$_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos'];?>
             <!-- botones -->
-            <a href="cerrar.php" class="boton-verde">Crear entradas</a>
-            <a href="cerrar.php" class="boton">Crear categorías</a>
-            <a href="cerrar.php" class="boton-naranja">Mis datos</a>
+            <a href="crear-entrada.php" class="boton-verde">Crear entradas</a>
+            <a href="crear-categoria.php" class="boton">Crear categorías</a>
+            <a href="mis-datos.php" class="boton-naranja">Mis datos</a>
             <a href="cerrar.php" class="boton-rojo boton">Cerrar sesión</a>
     </div>
     <?php endif; ?>
-    
+   
+    <?php if(!isset($_SESSION['usuario'])): ?>
     <div id="login" class="bloque">
         <h3>Identifícate</h3>
         <?php if(isset($_SESSION['error_login'])): ?>
@@ -33,15 +42,15 @@
 
     <div id="register" class="bloque">
         <h3>Regístrate</h3>
-        
+            
         <!-- Mostrar errores -->
         <?php if(isset($_SESSION['completado'])): ?>
-        <div class="alerta alerta-exito">
+        <div class="alerta-exito">
                 <?=$_SESSION['completado']?>
         </div>    
         <?php elseif(isset($_SESSION['errores']['general'])): ?>
          <div class="alerta alerta-error">
-                <?=$_SESSION['errores']['general']?> 
+                <?=$_SESSION['errores']['general']?>
          </div>    
         <?php endif; ?>    
         <form action="registro.php" method="POST">
@@ -65,6 +74,7 @@
         </form>
         <?php borrarErrores(); ?>
     </div>
+    <?php endif; ?>
 </aside>
 
 

@@ -57,7 +57,7 @@
        
         
         // INSERTAMOS USUARIO EN LA BBDD
-        $sql = "INSERT INTO usuarios VALUES (null, '$nombre', '$apellidos', '$email', '$password_segura');";
+        $sql = "INSERT INTO usuarios VALUES (null, '$nombre', '$apellidos', '$email', '$password_segura', CURDATE());";
         $guardar = mysqli_query($db, $sql);
         
       

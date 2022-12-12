@@ -1,22 +1,23 @@
-                <!-- CABECERA -->
-                <!-- LOGO -->
-                <!-- MENÚ -->
+<?php 
+if(!isset($_POST['busqueda'])){
+         header('Location: index.php');
+     }
+?>
 <?php require_once 'includes/cabecera.php'; ?>
-            <!-- SIDEBAR -->
- <?php require_once 'includes/lateral.php'; ?>
+<?php require_once 'includes/lateral.php'; ?>
 
              <!-- MAIN -->
  <div id="principal">
-     <h1>Últimas entradas</h1>
+     
+     <h1>Búsqueda: <?=$_POST['busqueda']?></h1>
      
      <?php 
-        $entradas = conseguirEntradas($db, true);
-        if(!empty($entradas)): 
+        $entradas = conseguirEntradas($db, null, null, $_POST['busqueda']);
+        
+        if(!empty($entradas) && mysqli_num_rows($entradas) >= 1): 
             while($entrada = mysqli_fetch_assoc($entradas)): 
          ?>
-            
-          
-      
+
                 <article class="entrada">
                     <a href="entrada.php?id=<?=$entrada['id']?>">
                         <h2><?=$entrada['titulo'] ?></h2>
@@ -26,24 +27,14 @@
                        </p>
                     </a>
                 </article>
-            
       <?php  
-      endwhile;
-        endif;
+            endwhile;
+              else:
      ?>
-     <?php if(empty($entradas)): ?>
-          <?php echo 'No hay entradas'; ?>
-     <?php
-     endif; ?>
-     
-     
-     <div id="ver-todas">
-     <a href="entradas.php">Ver todas las entradas</a>
-     </div>
+     <div class="alerta">No hay entradas en esta categoría</div
+     <?php endif; ?>
  </div>
-
+             
         <!-- FOOTER -->
         <?php require_once 'includes/pie.php'; ?>
-        
-        
-        
+

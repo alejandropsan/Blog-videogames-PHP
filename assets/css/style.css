@@ -32,6 +32,21 @@ body {
     box-shadow: 0px 1px 3px #ccc;
 }
 
+.alerta-exito {
+    padding: 5px;
+    font-size: 14px;
+    color: white;
+    background: green;
+    box-shadow: 0px 1px 3px #ccc;
+}
+
+.fecha {
+    color: #7c7979;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+
 /* CABECERA */
 
 #cabecera {
@@ -168,6 +183,7 @@ input[type="submit"],
 }
 
 .boton{
+    color: white !important; 
     text-align: center;
     width: 140px;
     background: blue;
@@ -192,7 +208,7 @@ input[type="submit"],
 .boton-verde{
     text-align: center;
     width: 140px;
-    color: white;
+    color: white !important;
     background: green;
     border: 1px solid #444;
     display: block;
@@ -204,6 +220,7 @@ input[type="submit"],
 }
 
 .boton-rojo {
+    color: white;
     background: red;
     border: 1px solid #444;
 }

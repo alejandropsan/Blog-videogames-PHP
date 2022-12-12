@@ -1,16 +1,14 @@
-                <!-- CABECERA -->
-                <!-- LOGO -->
-                <!-- MENÚ -->
+             
 <?php require_once 'includes/cabecera.php'; ?>
             <!-- SIDEBAR -->
  <?php require_once 'includes/lateral.php'; ?>
 
              <!-- MAIN -->
  <div id="principal">
-     <h1>Últimas entradas</h1>
+     <h1>Todas las entradas</h1>
      
      <?php 
-        $entradas = conseguirEntradas($db, true);
+        $entradas = conseguirEntradas($db);
         if(!empty($entradas)): 
             while($entrada = mysqli_fetch_assoc($entradas)): 
          ?>
@@ -31,19 +29,8 @@
       endwhile;
         endif;
      ?>
-     <?php if(empty($entradas)): ?>
-          <?php echo 'No hay entradas'; ?>
-     <?php
-     endif; ?>
-     
-     
-     <div id="ver-todas">
-     <a href="entradas.php">Ver todas las entradas</a>
-     </div>
+        
  </div>
-
+             
         <!-- FOOTER -->
         <?php require_once 'includes/pie.php'; ?>
-        
-        
-        
